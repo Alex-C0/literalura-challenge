@@ -53,8 +53,19 @@ public class Menu {
                     
                     """;
             System.out.println(menu);
-            opcion = scanner.nextInt();
+            System.out.println("Opción: ");
+
+            String entrada = scanner.nextLine();
+
             scanner.nextLine();
+
+            try{
+                opcion = Integer.parseInt(entrada);
+
+            }catch (NumberFormatException e){
+                System.out.println("Entrada inválida. Debe ingresar un número.");
+                continue;
+            }
 
             switch (opcion) {
                 case 1:
@@ -111,6 +122,15 @@ public class Menu {
 
 
             DatosLibro datos = respuesta.getLibros().get(0);
+
+            var libroExistente =
+                    libroRepository.findByTituloIgnoreCase(datos.getTitulo());
+
+            if (libroExistente.isPresent()) {
+                System.out.println("⚠️ El libro ya existe en la base de datos:");
+                System.out.println(libroExistente.get());
+                return;
+            }
 
 
             Autor autorGuardado;

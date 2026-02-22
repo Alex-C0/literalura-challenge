@@ -48,12 +48,11 @@ public class DatosLibro {
 
     @Override
     public String toString() {
-        return "Libro {" +
-                " id=" + id +
-                ", titulo='" + titulo + '\'' +
+        return "Libro " +
+
+                ", titulo='" + titulo + "\n" +
                 ", idiomas=" + idiomas +
                 ", descargas=" + descargas +
-                ", autores=" + autores +
-                '}';
+                ", autores=" + autores;
     }
 }
